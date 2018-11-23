@@ -1,0 +1,13 @@
+.view_two{
+  width:50%;
+}
+.switchReight {
+  float: right;
+  text-align: right;
+  flex:1;
+}
+.w3{
+  width: 30%;
+}
+@import '../../../add_form.wxss';
+@import '../../../top_detail.wxss';

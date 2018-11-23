@@ -1,0 +1,29 @@
+<view class="container">
+    <view class='totle'>
+      <view class="tr bg-w">
+        <view class="th">耳缺</view>
+        <view class="th">栏号</view> 
+        <view class="th">出生</view>
+        <view class="th">出栏</view>
+      </view>
+    </view>
+    <view class="address-list" wx:if="{{ vaccineList.length > 0 }}">
+        <view class="table">
+        <view class="tr_top bg-w"></view>
+          <block wx:for="{{vaccineList}}" wx:key="{{id}}">
+            <view class="tr {{index % 2 == 0?'bg-g':''}}" data-address-id="{{item.id}}">
+              <view class="td">{{item.earNotch}}</view>
+              <view class="td">{{item.columnCode}}</view>
+              <view class="td">{{item.birth}}</view>
+              <view class="td"><image catchtap="selectPig" data-address-id="{{item.id}}" class="del" src="/static/images/ic_menu_me.png"></image></view> 
+            </view>
+          </block>
+        </view>
+    </view>
+    <view class="empty-view" wx:if="{{ vaccineList.length <= 0 }}">
+      <image class="icon" src="/static/images/ic_no_record.png"></image>
+      <text class="text">没有肉猪</text>
+    </view>
+    <view class='total bottom0'>共{{total}}头肉猪</view>
+    <!-- <view class="add-vaccine" bindtap="vaccineAddOrUpdate" data-address-id="0">耳缺/耳标</view> -->
+</view>

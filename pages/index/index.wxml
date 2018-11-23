@@ -1,0 +1,58 @@
+<view class="page">
+  <view class="page__hd">
+    <view class='page_top'>
+      <view class='page_itme'>
+        <navigator class='four' url="/pages/excellent/mating/mating">
+        <!-- <view class='four'> -->
+          <image src="../../static/images/index/wait_mating.png"/>
+          <view>待配</view>
+          <text>{{waitMating}}</text>
+        <!-- </view> -->
+        </navigator>
+        <navigator class='four' url="/pages/excellent/gestation/gestation">
+        <!-- <view class='four'> -->
+          <image src="../../static/images/index/wait_gestation.png"/>
+          <view>妊检</view>
+          <text>{{waitGestation}}</text>
+        <!-- </view> -->
+        </navigator>
+        <navigator class='four' url="/pages/excellent/childbirth/childbirth">
+        <!-- <view class='four'> -->
+          <image src="../../static/images/index/wait_childbirth.png"/>
+          <view>分娩</view>
+          <text>{{waitChildbirth}}</text>
+        <!-- </view> -->
+        </navigator>
+        <navigator class='four' url="/pages/excellent/changePigsty/changePigsty?pigStatus=35">
+        <!-- <view class='four'> -->
+          <image src="../../static/images/index/wait_weneing.png"/>
+          <view>断奶</view>
+          <text>{{waitWeneing}}</text>
+        <!-- </view> -->
+        </navigator>
+      </view>
+    </view>
+    <view class='page_bottom'>
+      <navigator class='itme border_bottom' url="/pages/excellent/changePigsty/changePigsty?pigStatus=35"
+        wx:if="{{waitWeneing35}}"><image src='../../static/images/tip_icon.png'/> {{waitWeneing35}}头母猪在35天没有断奶</navigator>
+      <navigator class='itme' url="/pages/excellent/mating/mating"
+        wx:if="{{waitMating25}}"><image src='../../static/images/tip_icon.png'/>{{waitMating25}}头母猪在25天没有配种</navigator>
+      <navigator class='itme' url="/pages/ordinary/register/register"
+        wx:if="{{distinguish}}"><image src='../../static/images/tip_icon.png'/>{{distinguish}}头母猪生产后35天未做猪仔个体识    </navigator>
+    </view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-grids">
+      <block wx:for="{{powers}}" wx:item="*this" wx:key="id" >
+        <!-- <view wx:for="{{itemColumn}}" data-index2="{{index2}}"></view> -->
+        <!-- <navigator url="{{item.route}}" class="weui-grid {{itemColumn[index]}}" hover-class="weui-grid_active" style="background:{{itemColumn[index]}}"> -->
+        <navigator url="{{item.route}}" class="weui-grid" hover-class="weui-grid_active">
+          <view class="weui-grid__icon">
+            <image class="" src="{{item.icon}}" />
+          </view>
+          <view class="weui-grid__label">{{item.name}}</view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+</view>

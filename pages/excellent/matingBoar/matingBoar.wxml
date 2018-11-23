@@ -1,0 +1,29 @@
+<view class="container">
+    <view class='totle'>
+      <view class="tr bg-w">
+        <view class="th">耳缺</view>
+        <view class="th">使用次数</view>
+         <view class="th">品种</view> 
+        <view class="th ">配种</view>
+      </view>
+    </view>
+    <view class="address-list" wx:if="{{ boarList.length > 0 }}">
+        <view class="table">
+        <view class="tr_top bg-w"></view>
+          <block wx:for="{{boarList}}" wx:key="{{id}}">
+            <view class="tr {{index % 2 == 0?'bg-g':''}}" data-address-id="{{item.id}}">
+              <view class="td">{{item.earNotch}}</view>
+              <view class="td">{{item.pigNumber}}</view>
+              <view class="td">{{item.varieties}}</view> 
+              <view class="td"><image catchtap="deleteAddress" data-address-id="{{item.id}}" class="del" src="/static/images/ic_menu_mating.png"></image></view> 
+            </view>
+          </block>
+        </view>
+    </view>
+    <view class="empty-view" wx:if="{{ boarList.length <= 0 }}">
+      <image class="icon" src="/static/images/ic_no_record.png"></image>
+      <text class="text">还没有待配种公猪</text>
+    </view>
+    <view class='total bottom0'>共{{total}}头公猪待配种</view>
+    <!-- <view class="add-vaccine" bindtap="vaccineAddOrUpdate" data-address-id="0">耳缺/耳标快捷操作</view> -->
+</view>

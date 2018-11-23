@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="address-list" wx:if="{{ photoList.length > 0 }}">
+    <view class="table">
+      <block wx:for="{{photoList}}" wx:key="{{id}}">
+        <view class="tr {{index % 2 == 0?'bg-g':''}}" data-address-id="{{item.id}}">
+          <view class="td" wx:if="{{item.earNotch != null}}">耳缺：{{item.earNotch}}</view>
+          <view class="td" wx:if="{{item.earTag != null}}">耳标：{{item.earTag}}</view>
+          <view class="td">时间：{{item.addTime}}</view>
+        </view>
+        <view class="tr_photo {{index % 2 == 0?'bg-g':''}}" data-address-id="{{item.id}}">
+           <block wx:for="{{item.picList}}" wx:for-item="photo">
+            <image class='td__img' src="{{photo}}" bindtap="imgYu" data-list="{{item.picList}}" data-src="{{photo}}"/>
+          </block>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="empty-view" wx:if="{{ photoList.length <= 0 }}">
+    <image class="icon" src="/static/images/ic_no_record.png"></image>
+    <text class="text">
+        还没有照片记录
+    </text>
+  </view>
+  <view class='total'>共{{total}}条拍照记录</view>
+  <view class="add-vaccine" bindtap="vaccineAddOrUpdate" data-address-id="0">添加</view>
+</view>

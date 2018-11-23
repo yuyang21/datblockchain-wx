@@ -1,0 +1,94 @@
+<view class="add-vaccine">
+  <view wx:if="{{pigId}}">
+    <view class="form-item top">
+      <view class='view_two'>
+        <!-- 耳缺:{{register.earNotch}} -->
+        <view class='view1'>耳缺</view>
+        <view class='view2'>{{register.earNotch}}</view>
+      </view>
+      <view wx:if="{{register.pigGender == 0}}" class='view_two'>
+        <!-- 性别：公猪 -->
+        <view class='view1'>性别</view>
+        <view class='view2'>公猪</view>
+      </view>
+      <view wx:else class='view_two'>
+        <!-- 性别：母猪 -->
+        <view class='view1'>性别</view>
+        <view class='view2'>母猪</view>
+      </view>
+    </view>
+    <view class="form-item top">
+      <view class='view_two'>
+      <!-- 品种:{{register.varieties}} -->
+        <view class='view1'>品种</view>
+        <view class='view2'>{{register.varieties}}</view>
+      </view>
+      <view class='view_two'>
+      <!-- 出生日期:{{register.birth}} -->
+        <view class='view1'>出生日期</view>
+        <view class='view2'>{{register.birth}}</view>
+      </view>
+    </view>
+    <view class="form-item top">
+      <!-- 当前栏号: {{register.columnCode}} -->
+      <view class='view_two'>
+        <view class='view1'>当前栏号</view>
+        <view class='view2'>{{register.columnCode}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="add-form">
+    <view wx:if="{{!pigId}}">
+      <view class="form-item">
+          耳缺:<input class="input" bindinput="bindinputEarNotch" value="{{earNotch}}" data-index="{{index}}" auto-focus/>
+      </view>
+      <view class="form-item">
+          耳标:<input disabled class='input' placeholder='请上传耳标' placeholder-class="phcolor" value='{{earTag}}'></input>
+      </view>
+      <view class='form-item-scan'>
+        <button class="scan" bindtap="earTagAdd" data-index="{{index}}">扫一扫</button>
+      </view>
+    </view>
+    <view class="form-item border-gray" style="">
+        数量<input class="input" bindinput="bindinputNum" placeholder-class="phcolor" value='{{slaughterNumber}}' placeholder='请输入数量' type='number' auto-focus/>
+    </view>
+    <!-- <view class='form-item'>
+      <view class='name'>数量：</view>
+        <view class="tui-gallery-list">
+          <view class="tui-number-group">
+            <button class="tui-number-cell" bindtap="nextNum1" disabled='{{disabled1}}'>-</button>
+            <input class="tui-number-cell" type="number" value='{{slaughterNumber}}'></input>
+            <button class="tui-number-cell" bindtap="prevNum1" disabled='{{disabled2}}'>+</button>
+          </view>
+        </view>
+      </view>
+    </view> -->
+    <view class="section">
+      <image src='/static/images/slaughter_add.png' class="slaughter_add" />
+      <slider bindchange="bindSlaughterNumberChange" bindchanging="bindSlaughterNumberChanging" min="1" max="100" backgroundColor="#5ce7c7" activeColor="#5ce7c7" block-color="#31c4a1" block-size="28" />
+    </view>
+  </view>
+  <view class='tips'>
+    <image src='../../../static/images/tip_icon.png'></image>
+    <text>使用指南：选择此猪分为几块，系统会自动连接打印机进行打印。</text>
+  </view>
+  <view class="modal-box" hidden="{{flag}}" bindtap="hide">
+
+    <view class="modal-body">
+
+      <view class="modal-content">
+        <image src="{{imgData}}" class="qrcode"></image>
+        <view class='text'>耳缺：{{register.earNotch}}</view>
+        <!-- <view class='text'>当前：1/8</view> -->
+        <button class="knowBtn" bindtap="hide">我知道了</button>
+     </view>
+    </view>
+  </view>
+  <view class="btns">
+    <button class="cannel" bindtap="cancelAddress">取消</button>
+    <button class="save" bindtap="saveAddress" disabled='{{saveRepeat}}'>保存并打印</button>
+  </view>
+  </view>
+  
+  

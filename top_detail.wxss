@@ -1,0 +1,28 @@
+/* top_detail.wxss */
+.add-vaccine .form-item.top{
+    height: 84rpx;
+    padding-left: 50rpx;
+    /* border-bottom: 1px solid #d9d9d9; */
+    display: flex;
+    align-items: center;
+    padding-right: 40rpx; 
+    background: #31c4a1;
+    border: none;
+}
+.add-vaccine .form-item.top:first-child{
+  border-top: 1px solid #fff;
+}
+.view_two{
+  width:50%;
+}
+.view_two .view1{
+  color: rgba(255, 255, 255, 0.6);
+  width: 43%;
+  display: inline-block;
+}
+.view_two .view2{
+  color: #fff;
+  width: 52%;
+  margin-left: 5%;
+  display: inline-block;
+}

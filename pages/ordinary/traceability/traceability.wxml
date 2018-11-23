@@ -1,0 +1,2 @@
+<!-- <web-view src="https://heizhu360.datbc.com/pig360/index.html?secret=LwPk4XxRaheJPg3z1MK9CZtKiWoafdC1ejQ39xUmxyFnwwWGpeEPXn9m6GVTZScdmmtxFHeruWSMmkTEkez7Ez4oGf"></web-view> -->
+<web-view src="{{scanUrl}}"></web-view>

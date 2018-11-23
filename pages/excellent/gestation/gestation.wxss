@@ -1,0 +1,8 @@
+@import '../../../list_common.wxss';
+.address-list .del{
+  width: 63rpx;
+  height: 57rpx;
+}
+.td:last-child{
+  margin-top: 12rpx;
+}

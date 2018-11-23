@@ -1,0 +1,64 @@
+<view class="add-vaccine">
+  <view class="add-form">
+    <view wx:if="{{!pigId}}">
+      <!-- <view class="form-item">
+        检疫合格二维码:
+        <input class="input" bindinput="quarantineManual" value="{{quarantine}}" data-index="{{index}}" auto-focus/>
+      </view> --> 
+      <view class="form-item">
+        <text style="width: 4px;height: 15px;border-radius: 2px;background-color: #31c4a1;margin-right:6rpx;"></text>
+        检疫合格二维码
+        <view class='input'>{{item.earTag}}</view>
+      </view>
+      <view class="table">
+        <block wx:for="{{quarantineList}}" wx:key="{{id}}">
+          <view class="tr bg-g">
+            <view class="td">{{item.key}}</view>
+            <view class="td">{{item.value}}</view>
+          </view>
+        </block>
+      </view>
+      <view class='scanContent {{quarantineList.length >0 ? "modify" : "" }}'>
+        <view class='border-dashed'>
+          <button class="scan" bindtap="quarantineScan" data-index="{{index}}">
+            <block wx:if="{{quarantineList.length >0}}">修改</block>
+            <block wx:else>扫一扫</block>
+          </button>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="form-item">
+      标签二维码:
+      <view>{{earTag}}</view>
+      <button class="scan" bindtap="earTagAdd" data-index="{{index}}">扫一扫</button>
+    </view> -->
+    <view class='borderGray'>
+      <scroll-view class='socr-inner' scroll-y="true">
+        <block wx:for="{{piglets}}" wx:key="{{index}}">
+          <!-- <view>{{index+1}}</view> -->
+          <view class="form-item">
+            <text style="width: 4px;height: 15px;border-radius: 2px;background-color: #31c4a1;margin-right:6rpx;"></text>
+            标签二维码:
+            <view>{{item.earTag}}</view>
+          </view>
+          <view class='scanContent' wx:if="{{piglets.length == index+1}}">
+            <view class='border-dashed' >
+              <button class="scan" bindtap="earTagAdd" data-index="{{index}}" >扫一扫</button>
+            </view>
+          </view>
+          <!-- <button class="scan" bindtap="earTagAdd" data-index="{{index}}" wx:if="{{piglets.length == index+1}}">扫一扫</button> -->
+          <view class='many-line'></view>
+        </block>
+      </scroll-view>
+    </view>
+    
+  </view>
+  <!-- <view class='tips'>
+    <image src='../../../static/images/tip_icon.png'></image>
+    <text>使用指南：第一个扫描是动物检疫合格证明左下角二维码，后续可以连续添加猪肉二维码的扫码。</text>
+  </view> -->
+  <view class="btns">
+    <button class="cannel" bindtap="cancelAddress">取消</button>
+    <button class="save" bindtap="saveAddress" disabled='{{saveRepeat}}'>保存</button>
+  </view>
+</view>

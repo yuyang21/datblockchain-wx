@@ -1,0 +1,34 @@
+<view class="container">
+  <view class='totle'>
+    <view class="tr bg-w">
+      <view class="th" style='width:60%'>耳标</view>
+      <view class="th">栏号</view>
+      <view class="th">公母</view>
+      <view class="th ">品种</view>
+      <view class="th ">淘汰</view>
+    </view>
+  </view>
+  <view class="address-list" wx:if="{{ pigList.length > 0 }}">
+    <view class="table">
+      <view class="tr_top bg-w"></view>
+      <block wx:for="{{pigList}}" wx:key="{{id}}">
+        <view class="tr {{index % 2 == 0?'bg-g':''}}" bindtap="addressAddOrUpdate" data-address-id="{{item.id}}">
+          <view class="td" style='width:60%'>{{item.earTag}}</view>
+          <view class="td" wx:if="{{item.columnCode}}">{{item.columnCode}}</view>
+          <view class="td" wx:else>--</view>
+          <view class="td" wx:if="{{ item.pigGender == 0 }}">公</view>
+          <view class="td" wx:else>母</view>
+          <view class="td">{{item.varieties}}</view>
+          <view class="td">
+            <image catchtap="deleteAddress" data-address-id="{{item.id}}" class="del" src="/static/images/ic_menu_del.png"></image>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="empty-view" wx:if="{{ pigList.length <= 0 }}">
+    <image class="icon" src="/static/images/ic_no_record.png"></image>
+    <text class="text">还没有肉猪记录</text>
+  </view>
+  <view class="total">共{{total}}头肉猪</view>        
+</view>

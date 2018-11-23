@@ -1,0 +1,28 @@
+<view class="container">
+    <view class='totle'>
+      <view class="tr bg-w">
+        <view class="th">耳缺</view>
+        <view class="th">配种时间</view> 
+        <view class="th">胎次</view>
+        <view class="th">操作</view>
+      </view>
+    </view>
+    <view class="address-list" wx:if="{{ vaccineList.length > 0 }}">
+        <view class="table">
+        <view class="tr_top bg-w"></view>
+          <block wx:for="{{vaccineList}}" wx:key="{{id}}">
+            <view class="tr {{index % 2 == 0?'bg-g':''}}" data-address-id="{{item.id}}">
+              <view class="td">{{item.earNotch}}</view>
+              <view class="td">{{item.newMatingTime}}</view>
+              <view class="td">{{item.pigNumber}}</view>
+              <view class="td"><image catchtap="selectPig" data-address-id="{{item.id}}" class="del" src="/static/images/ic_menu_gestation.png"></image></view> 
+            </view>
+          </block>
+        </view>
+    </view>
+    <view class="total bottom0">共{{total}}头母猪已配种</view>    
+    <view class="empty-view" wx:if="{{ vaccineList.length <= 0 }}">
+      <image class="icon" src="/static/images/ic_no_record.png"></image>
+      <text class="text">还没有需要妊娠检查的母猪</text>
+    </view>
+</view>

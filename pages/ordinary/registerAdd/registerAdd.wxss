@@ -1,0 +1,19 @@
+@import '../../../add_form.wxss';
+@import '../../../top_detail.wxss';
+
+.socr-inner{
+  height:340px; 
+  color:#666666; 
+  background-color: #efefef;
+}
+.socr-inner .piglets {
+  background-color: #ffffff;
+}
+
+.many-line{
+  border-bottom:1px solid #642100;
+}
+.margin-t-35{
+  border-top: 35rpx solid #efefef;
+  margin-top: 0;
+}

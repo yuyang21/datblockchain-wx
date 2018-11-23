@@ -1,0 +1,9 @@
+<view class="container">
+    <view class="form-box">
+     <block wx:if="{{authorization}}">
+      <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" wx:if="{{canIUse}}" disabled='{{authorRepeat}}'>授权登录</button>
+      <view wx:else>请升级微信版本</view>
+     </block>
+     <button type="primary" class="login-btn" bindtap="wxLogin" wx:else disabled='{{wxRepeat}}'>微信直接登录</button>
+    </view>
+</view>

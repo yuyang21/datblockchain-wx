@@ -1,0 +1,61 @@
+@import '../../../add_form.wxss';
+@import '../../../top_detail.wxss';
+.tui-number-group{
+ display: table;
+ table-layout: fixed;
+ width: 300rpx;
+ text-align: center;
+ border-radius: 6px;
+ border: 1px solid #bbb;
+ overflow: hidden;
+}
+.tui-number-cell{
+ display: table-cell;
+ line-height: 1.7;
+ border-radius: 0;
+}
+button::after{
+ border-bottom: none;
+ border-top: none;
+ border-radius: 0;
+}
+
+.add-vaccine .form-item-group{
+    height: 400rpx;
+    padding-left: 31.25rpx;
+    border-bottom: 1px solid #d9d9d9; 
+    display: flex;
+    align-items: center;
+    /* padding-right: 31.25rpx; */
+    flex-direction:row;
+    
+}
+.form-item-group .left{
+    height: 400rpx;
+    width:15%;
+    align-items: center;
+    display: flex;
+    border-right:1px solid #d9d9d9;
+}
+.form-item-group .right{
+    height: 400rpx;
+    width:85%;
+    align-items: center;
+    display: flex;
+    border-bottom:1px solid #d9d9d9;
+    flex-direction:column;
+}
+.form-item-group .right .inner{
+    height: 100rpx;
+    width:100%;
+    align-items: center;
+    display: flex;
+    border-bottom:1px solid #d9d9d9;
+    padding-left: 31.25rpx;
+}
+.form-item-group .right .inner .name{
+  width:140rpx;
+}
+.form-item-update .name{
+  width:140rpx;
+}

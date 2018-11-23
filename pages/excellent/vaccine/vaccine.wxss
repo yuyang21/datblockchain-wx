@@ -1,0 +1,8 @@
+@import '../../../list_common.wxss';
+.table .tr {
+  height: 4.5rem;
+}
+.table .tr .td:nth-child(2) {
+  text-align:left;
+  padding-left: 27rpx;
+}

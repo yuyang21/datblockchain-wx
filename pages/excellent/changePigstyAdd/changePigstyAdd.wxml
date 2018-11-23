@@ -1,0 +1,82 @@
+<view class="add-vaccine">
+  <view class="form-item top">
+    <view class='view_two'>
+      <view class='view1'>耳缺</view>
+      <view class='view2'>{{register.earNotch}}</view>
+      <!-- 耳缺:{{register.earNotch}} -->
+    </view>
+    <view wx:if="{{register.pigGender == 0}}" class='view_two'>
+      <!-- 性别：公猪 -->
+      <view class='view1'>性别</view>
+      <view class='view2'>公猪</view>
+    </view>
+    <view wx:else class='view_two'>
+      <!-- 性别：母猪 -->
+      <view class='view1'>性别</view>
+      <view class='view2'>母猪</view>
+    </view>
+  </view>
+  <view class="form-item top">
+    <view class='view_two'>
+      <!-- 品种:{{register.varieties}} -->
+      <view class='view1'>品种</view>
+      <view class='view2'>{{register.varieties}}</view>
+    </view>
+    <view class='view_two'>
+      <!-- 出生日期:{{register.birth}} -->
+      <view class='view1'>出生日期</view>
+      <view class='view2'>{{register.birth}}</view>
+    </view>
+  </view>
+  <view class="form-item top">
+    <view class='view_two'>
+      <view class='view1'>当前栏号</view>
+      <view class='view2'>{{register.columnCode}}</view>
+    </view>
+    <!-- 当前栏号: {{register.columnCode}} -->
+  </view>
+  <view class="add-form border-gray">
+    <view class="form-item" wx:if="{{isOrdinary}}">
+      <text>更改为种猪</text>
+      <view class="switchReight">
+        <switch bindchange="switch2Change" />
+      </view>
+    </view>
+    <view class="form-item">
+      <text>目标栏号</text>
+      <input class="input" bindinput="bindIsColumnCode" value="{{columnCode}}" placeholder-class="phcolor" placeholder='请输入目标栏号进行操作'/>
+    </view>
+    <!-- <view class="form-item" wx:if="{{ register.pigStatus == 30}}">
+      此次转栏是断奶吗？
+    </view> -->
+    <view class="form-item" wx:if="{{ register.pigStatus == 30 || register.pigStatus == 35}}">
+      此次转栏是断奶吗？
+      <view class="switchReight">
+        <switch bindchange="switch3Change"/>
+      </view>
+    </view>
+    <!-- <view class="form-item" wx:if="{{isOrdinary}}">
+      <view class='w3'>目标栏</view>
+      <radio-group bindchange="radioChange" class='group-type'>
+        <radio value="45" name="pigStatus" checked="{{register.pigStatus==0}}" class='radio-type'>保育室</radio>
+        <radio value="46" name="pigStatus" checked="{{register.pigStatus!=0}}">育肥室</radio>
+      </radio-group>
+    </view> -->
+    <view class="section" wx:if="{{isOrdinary}}"> 
+      <picker bindchange="bindPigStatusChange" value="{{pigStatusIndex}}" range="{{pigStatusArr}}">  
+          <text>目标栏</text>
+          <view class="picker" wx:if="{{pigStatusText}}">  
+            {{pigStatusText}}  
+          </view>
+          <text class="noData" wx:if="{{!pigStatusText}}">请选择目标栏</text>
+      </picker>
+    </view> 
+  </view>
+  <!-- <view>
+    使用指南：输入目标栏号进行转栏操作。
+  </view> -->
+  <view class="btns">
+    <button class="cannel" bindtap="cancelAddress">取消</button>
+    <button class="save" bindtap="saveAddress" disabled='{{saveRepeat}}'>保存</button>
+  </view>
+</view>

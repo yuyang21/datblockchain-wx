@@ -1,0 +1,29 @@
+<view class="container">
+  <view class='totle'>
+    <view class="tr bg-w">
+      <view class="th" style='width:60%'>耳标</view>
+      <view class="th">出生日期</view>
+      <view class="th">称重日期</view>
+      <view class="th">重量(kg)</view>
+    </view>
+  </view>
+  <view class="address-list" wx:if="{{ vaccineList.length > 0 }}">
+    <view class="table">
+      <view class="tr_top bg-w"></view>
+      <block wx:for="{{vaccineList}}" wx:key="{{id}}">
+        <view class="tr {{index % 2 == 0?'bg-g':''}}" data-address-id="{{item.id}}">
+          <view class="td" style='width:60%'>{{item.earTag}}</view>
+          <view class="td">{{item.birth}}</view>
+          <view class="td">{{item.weightTime}}</view>
+          <view class="td">{{item.weight}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="empty-view" wx:if="{{ vaccineList.length <= 0 }}">
+    <image class="icon" src="/static/images/ic_no_record.png"></image>
+    <text class="text">没有称重记录</text>
+  </view>
+  <view class='total'>共{{total}}条称重记录</view>
+  <view class="add-vaccine" bindtap="vaccineAddOrUpdate" data-address-id="0">新增称重记录</view>
+</view>

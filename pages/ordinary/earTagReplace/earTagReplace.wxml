@@ -1,0 +1,17 @@
+<view class="add-address">
+  <view class="add-form">
+    <view class="form-item">
+      耳缺:
+      <input class="input" bindinput="bindinputEarNotch" value="{{register.earNotch}}" auto-focus/>
+    </view>
+    <view class="form-item">
+      耳标:
+      <view>{{register.earTag}}</view>
+      <button class="scan" bindtap="earTabAdd">扫一扫</button>
+    </view>
+  </view>
+  <view class="btns">
+    <button class="cannel" bindtap="cancelAddress">取消</button>
+    <button class="save" bindtap="saveAddress">保存</button>
+  </view>
+</view>

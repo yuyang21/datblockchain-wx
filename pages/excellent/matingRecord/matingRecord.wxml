@@ -1,0 +1,29 @@
+<view class="container">
+    <view class='totle'>
+      <view class="tr bg-w">
+        <view class="th">母猪耳缺</view>
+        <view class="th">公猪耳缺</view>
+        <view class="th">配种时间</view> 
+        <view class="th">配种方式</view>
+      </view>
+    </view>
+    <view class="address-list" wx:if="{{ matingList.length > 0 }}">
+        <view class="table">
+        <view class="tr_top bg-w"></view>
+          <block wx:for="{{matingList}}" wx:key="{{id}}">
+            <view class="tr {{index % 2 == 0?'bg-g':''}}" data-address-id="{{item.id}}">
+              <view class="td">{{item.sowEarNotch}}</view>
+              <view class="td">{{item.boarEarNotch}}</view>
+              <view class="td">{{item.matingTime}}</view> 
+              <view class="td" wx:if="{{item.matingType == 1}}">人工授精</view>
+              <view class="td" wx:if="{{item.matingType == 2}}">自然交配</view>  
+            </view>
+          </block>
+        </view>
+    </view>
+    <view class='total bottom0'>共{{total}}条配种记录</view>
+    <view class="empty-view" wx:if="{{ matingList.length <= 0 }}">
+      <image class="icon" src="/static/images/ic_no_record.png"></image>
+      <text class="text">还没有配种记录</text>
+    </view>
+</view>

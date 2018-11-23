@@ -1,0 +1,29 @@
+<view class="container">
+    <view class='totle'>
+      <view class="tr bg-w">
+        <view class="th">母猪耳缺</view>
+        <view class="th">仔数</view>
+        <view class="th">分娩时间</view> 
+        <view class="th">状态</view>
+      </view>
+    </view>
+    <view class="address-list" wx:if="{{ childbirthsList.length > 0 }}">
+        <view class="table">
+        <view class="tr_top bg-w"></view>
+          <block wx:for="{{childbirthsList}}" wx:key="{{id}}">
+            <view class="tr {{index % 2 == 0?'bg-g':''}}" data-address-id="{{item.id}}">
+              <view class="td">{{item.sowEarNotch}}</view>
+              <view class="td">{{item.pigletNumber}}</view>
+              <view class="td">{{item.childbirthTime}}</view> 
+              <view class="td" wx:if="{{item.childbirthState == 0}}">正常分娩</view>
+              <view class="td" wx:if="{{item.childbirthState == 1}}">流产</view>  
+            </view>
+          </block>
+        </view>
+    </view>
+    <view class="empty-view" wx:if="{{ childbirthsList.length <= 0 }}">
+      <image class="icon" src="/static/images/ic_no_record.png"></image>
+      <text class="text">还没有生产记录</text>
+    </view>
+    <view class='total bottom0'>共{{total}}条生产记录</view>
+</view>

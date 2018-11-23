@@ -1,0 +1,71 @@
+<view class="add-vaccine">
+    <view class="add-form">
+        
+        <view class="form-item" wx:if="{{register.matingType == 1}}">
+            <text>配种方式</text>
+            <text class="submitForm">人工授精</text>
+        </view>
+        <view class="form-item" wx:else>
+            <text>配种方式</text>
+            <text class="submitForm">自然交配</text>
+        </view>
+        <view class="form-item">
+            <text>母猪耳缺</text>
+            <text class="submitForm">{{register.sowEarNotch}}</text>
+        </view>
+        <view class="form-item">
+            <text>母猪胎次</text>
+            <text class="submitForm">{{register.parity}}</text>
+        </view>
+        <view class="form-item">
+            <text>公猪耳缺</text>
+            <text class="submitForm">{{register.boarEarNotch}}</text>
+        </view>
+        <view class="form-item">
+            <text>公猪次数</text>
+            <text class="submitForm">{{register.boarNumber}}</text>
+        </view>
+        <view class="section">
+            <text>配种日期</text>
+            <text class="submitForm">{{register.matingTime}}  </text>
+        </view>
+        <!-- <view class="form-item">
+          <radio-group bindchange="radioChange" class="group-type">
+            <radio value="20" name="pigStatus" checked="{{pigStatus==20}}" class='radio-type'>已受孕</radio>
+            <radio value="21" name="pigStatus" checked="{{pigStatus==21}}" >未受孕</radio>
+          </radio-group>
+        </view> -->
+        <view class="section"> 
+          <picker bindchange="bindPigStatusChange" value="{{pigStatusIndex}}" range="{{pigStatusArr}}">  
+              <text>受孕情况</text>
+              <view class="picker" wx:if="{{pigStatusText}}">  
+                {{pigStatusText}}  
+              </view>
+              <text class="noData phcolor" wx:if="{{!pigStatusText}}">请选择是否已经受孕</text>
+          </picker>
+        </view> 
+    </view>
+    <!-- <view class="tips">
+        <image src='/static/images/tip_icon.png'/>
+        <text>请选择是否已怀孕。</text>
+    </view> -->
+    <view class="btns">
+        <button class="cannel" bindtap="cancelAddress">取消</button>
+        <button class="save" bindtap="saveAddress" disabled='{{saveRepeat}}'>保存</button>
+    </view>
+
+    <view class="region-select" wx:if="{{openSelectRegion}}">
+      <view class="hd">
+        <view class="region-selected">
+          <view class="item {{item.id == 0 ? 'disabled' : ''}} {{(regionType -1) === index ? 'selected' : ''}}" bindtap="selectRegionType" data-region-type-index="{{index}}" wx:for="{{selectRegionList}}" wx:key="id">{{item.name}}</view>
+        </view>
+        <view class="done {{selectRegionDone ? '' : 'disabled'}}" bindtap="doneSelectRegion">确定</view>
+      </view>
+      <view class="bd">
+      <scroll-view scroll-y class="region-list">
+        <view class="item {{item.selected ? 'selected' : ''}}" bindtap="selectRegion" data-region-index="{{index}}" wx:for="{{regionList}}" wx:key="id">{{item.name}}</view>
+      </scroll-view>
+      </view>
+    </view>
+</view>
+<view class="bg-mask" bindtap="cancelSelectRegion" wx:if="{{openSelectRegion}}"></view>

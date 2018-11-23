@@ -1,0 +1,69 @@
+<view class="add-vaccine">
+  <view class="add-form">
+    <view class="section">
+      <picker bindchange="bindSelectTypeChange" value="{{selectTypeIndex}}" range="{{selectTypeArr}}">
+        <text>录入方式</text>
+        <view class="picker" wx:if="{{selectTypeText}}">{{selectTypeText}}</view>
+        <text class='noData' wx:if="{{!selectTypeText}}">请选择疫苗</text>
+      </picker>
+    </view>
+    <view class="form-item" wx:if="{{register.selectType==2}}">
+      栏号
+      <input class="input" bindinput="bindinputColumnCode" value="{{register.columnCodes}}" placeholder-class="phcolor" placeholder='请输入栏号' auto-focus/>
+    </view>
+    <view class="form-item" wx:if="{{register.selectType==3}}">
+      耳缺
+      <input class="input" bindinput="bindinputEarNotch" value="{{register.earNotchs}}" placeholder-class="phcolor" placeholder='请输入耳缺' auto-focus/>
+    </view>
+    <view class="form-item" wx:if="{{register.selectType==4}}">
+      耳标
+      <input class="input" value="{{register.earTags}}" placeholder-class="phcolor" placeholder='请上传耳标' disabled/>
+    </view>
+    <view class="form-item-scan" wx:if="{{register.selectType==4}}">
+      <button class="scan" bindtap="earTabAdd">扫一扫</button>
+    </view>
+    <view class="section">
+      <picker bindchange="bindPickerChange" value="{{varietiesIndex}}" range="{{varietiesArr}}">
+        <text>疫苗</text>
+        <view class="picker" wx:if="{{register.vaccine}}">{{register.vaccine}}</view>
+        <text class='noData' wx:if="{{!register.vaccine}}">请选择疫苗</text>
+      </picker>
+    </view>
+    <view class="form-item">
+      疫苗编号
+      <input class="input" bindinput="bindinputSource" value="{{register.vaccineCode}}" placeholder-class="phcolor" placeholder='请输入疫苗编号' />
+    </view>
+    <view class="form-item">
+      免疫人员
+      <input class="input" bindinput="bindinputPeo" value="{{register.vaccinePeo}}" placeholder-class="phcolor" placeholder='请输入免疫人员' />
+    </view>
+    <view class="section">
+      <picker mode="date" value="{{date}}" start="2010-01-01" end="2090-1-1" bindchange="bindDateChange">
+        <text>接种日期</text>
+        <view class="picker" wx:if="{register.vaccineTime}}">{{register.vaccineTime}}</view>
+        <text class='noData' wx:if="{{!register.vaccineTime}}">请选择接种日期</text>
+      </picker>
+    </view>
+
+  </view>
+  <view class="tips" wx:if="{{register.selectType==4}}">
+    <image src='/static/images/tip_icon.png' />
+    <text>耳标是猪耳朵上的二维码，疫苗接种时可以针对单头种猪进行接种记录。扫一扫二维码，可以录入多头猪的信息一起提交。</text>
+  </view>
+  <view class="tips" wx:if="{{register.selectType==3}}">
+    <image src='/static/images/tip_icon.png' />
+    <text>耳缺即耳号，疫苗接种时可以针对单头种猪进行接种记录。手动输入猪的耳标信息，即可录入疫苗信息，如需要多头录入则可以输入多个耳缺以空 格隔开。例如：123 445</text>
+  </view>
+  <view class="tips" wx:if="{{register.selectType==2}}">
+    <image src='/static/images/tip_icon.png' />
+    <text>为便捷批量化操作，可以直接输入栏号信息，系统将记录栏中所有猪的接种疫苗信息，如有多栏，则可以输入多个栏号以空格 隔开。例如：123 445</text>
+  </view>
+  <view class="tips" wx:if="{{register.selectType==1}}">
+    <image src='/static/images/tip_icon.png' />
+    <text>所有种猪都会记录此疫苗的接种信息。如小批量接种疫苗，可以勾选栏号或耳缺耳标，进行小批量录入。</text>
+  </view>
+  <view class="btns">
+    <button class="cannel" bindtap="cancelAddress">取消</button>
+    <button class="save" bindtap="saveAddress" disabled='{{checkfunRepeat}}'>保存</button>
+  </view>
+</view>

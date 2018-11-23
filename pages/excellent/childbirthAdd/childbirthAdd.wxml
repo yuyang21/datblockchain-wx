@@ -1,0 +1,168 @@
+<view class="add-vaccine">
+  <view class="form-item top">
+    <view wx:if="{{register.matingType == 1}}" class='view_two'>
+      <view class='view1'>配种方式</view>
+      <view class='view2'>人工授精</view>
+    </view>
+    <view wx:else class='view_two'>
+      <view class='view1'>配种方式</view>
+      <view class='view2'>自然交配</view>
+    </view>
+    <view class='view_two'>
+      <!-- 配种日期: {{register.matingTime}} -->
+      <view class='view1'>配种日期</view>
+      <view class='view2'>{{register.matingTime}}</view>
+    </view>
+  </view>
+  <view class="form-item top">
+    <view class='view_two'>
+      <view class='view1'>母猪耳缺</view>
+      <view class='view2'>{{register.sowEarNotch}}</view>
+      <!-- 母猪耳缺:{{register.sowEarNotch}} -->
+    </view>
+    <view class='view_two'>
+      <view class='view1'>母猪胎次</view>
+      <view class='view2'>{{register.parity}}</view>
+      <!-- 母猪胎次:{{register.parity}} -->
+    </view>
+  </view>
+  <view class="form-item top">
+    <view class='view_two'>
+    <!-- 公猪耳缺:{{register.boarEarNotch}} -->
+      <view class='view1'>公猪耳缺</view>
+      <view class='view2'>{{register.boarEarNotch}}</view>
+    </view>
+    <view class='view_two'>
+    <!-- 公猪次数:{{register.boarNumber}} -->
+      <view class='view1'>公猪次数</view>
+      <view class='view2'>{{register.boarNumber}}</view>
+    </view>
+  </view>
+  <view class="form-item top">
+    <view class='view_two'>
+      <view class='view1'>预产日期</view>
+      <view class='view2'>{{register.preproductionTime}}</view>
+    </view>
+    <!-- 预产日期: {{register.preproductionTime}} -->
+  </view>
+  <view class="add-form border-gray">
+    <!-- <view class="form-item-update">
+      <radio-group bindchange="radioChange" class="group-type">
+        <radio value="0" name="childbirthState" checked="{{childbirthState==0}}" class='radio-type'>正常</radio>
+        <radio value="1" name="childbirthState" checked="{{childbirthState==1}}">流产</radio>
+      </radio-group>
+    </view> -->
+    <view class="section">  
+      <picker bindchange="bindChildbirthStateChange" value="{{childbirthStateIndex}}" range="{{childbirthStateArr}}">  
+        <text>正常/流产</text>
+        <view class="picker" wx:if="{{childbirthStateText}}">  
+          {{childbirthStateText}}  
+        </view>
+        <text class="noData" wx:if="{{!childbirthStateText}}">请选择分娩状态</text>
+      </picker> 
+    </view>
+    <view wx:if="{{childbirthState == 0}}" class="">
+      <view class="section">  
+        <picker mode="date" value="{{date}}" start="2010-01-01" end="2090-1-1" bindchange="bindDateChange">  
+          <text>分娩日期</text>
+          <view class="picker" wx:if="{{childbirthTime}}">  
+            {{childbirthTime}}  
+          </view>
+          <text class="noData" wx:if="{{!childbirthTime}}">请选择分娩日期</text>
+        </picker>  
+      </view>
+      <view class="form-item">
+          仔数<input class="input" bindinput="bindinputPigletNumber" value="{{pigletNumber}}" placeholder-class="phcolor" placeholder='请输入仔数'/>
+      </view>
+      <view class="form-item">
+          活仔数<input class="input" bindinput="bindinputAliveNumber" value="{{aliveNumber}}" placeholder-class="phcolor" placeholder='请输入活仔数'/>
+      </view>
+      <view class="form-item">
+          木乃伊<input class="input" bindinput="bindinputMummyNumber" value="{{mummyNumber}}" placeholder-class="phcolor" placeholder='请输入木乃伊'/>
+      </view>
+      <view class="form-item">
+          溺仔<input class="input" bindinput="bindinputDrowningNumber" value="{{drowningNumber}}" placeholder-class="phcolor" placeholder='请输入溺仔'/>
+      </view>
+      <view class="form-item">
+          死胎<input class="input" bindinput="bindinputStillbirthNumber" value="{{stillbirthNumber}}" placeholder-class="phcolor" placeholder='请输入死胎'/>
+      </view>
+      <!-- <view class="form-item-update">
+        <view class='name'>仔数：</view>
+        <view class="tui-gallery-list">
+          <view class="tui-number-group">
+            <button class="tui-number-cell" bindtap="nextNum1" disabled='{{disabled1}}'>-</button>
+            <input class="tui-number-cell" type="number" value='{{pigletNumber}}'></input>
+            <button class="tui-number-cell" bindtap="prevNum1" disabled='{{disabled2}}'>+</button>
+          </view>
+        </view>
+      </view>
+      <view class='form-item-group'>
+        <view class="left">
+        其中：
+        </view>
+        <view class="right">
+          <view class="inner">
+            <view class='name'>活仔数：</view>
+            <view class="tui-gallery-list">
+              <view class="tui-number-group">
+                <button class="tui-number-cell" bindtap="nextNum2" disabled='{{disabled3}}'>-</button>
+                <input class="tui-number-cell" type="number" value='{{aliveNumber}}'></input>
+                <button class="tui-number-cell" bindtap="prevNum2" disabled='{{disabled4}}'>+</button>
+              </view>
+            </view>
+          </view>
+          <view class="inner">
+            <view class='name'>木乃伊：</view>
+            <view class="tui-gallery-list">
+              <view class="tui-number-group">
+                <button class="tui-number-cell" bindtap="nextNum3" disabled='{{disabled5}}'>-</button>
+                <input class="tui-number-cell" type="number" value='{{mummyNumber}}'></input>
+                <button class="tui-number-cell" bindtap="prevNum3" disabled='{{disabled6}}'>+</button>
+              </view>
+            </view>
+          </view>
+          <view class="inner">
+            <view class='name'>溺 仔：</view>
+            <view class="tui-gallery-list">
+              <view class="tui-number-group">
+                <button class="tui-number-cell" bindtap="nextNum4" disabled='{{disabled7}}'>-</button>
+                <input class="tui-number-cell" type="number" value='{{drowningNumber}}'></input>
+                <button class="tui-number-cell" bindtap="prevNum4" disabled='{{disabled8}}'>+</button>
+              </view>
+            </view>
+          </view>
+          <view class="inner">
+            <view class='name'>死 胎：</view>
+            <view class="tui-gallery-list">
+              <view class="tui-number-group">
+                <button class="tui-number-cell" bindtap="nextNum5" disabled='{{disabled9}}'>-</button>
+                <input class="tui-number-cell" type="number" value='{{stillbirthNumber}}'></input>
+                <button class="tui-number-cell" bindtap="prevNum5" disabled='{{disabled10}}'>+</button>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </view> -->
+    </view>
+    <view wx:else>
+      <view class="section">  
+        <picker mode="date" value="{{date}}" start="2010-01-01" end="2090-1-1" bindchange="bindDateChange">  
+          <text>分娩日期</text>
+          <view class="picker" wx:if="{{childbirthTime}}">  
+            {{childbirthTime}}  
+          </view>
+          <text class="noData" wx:if="{{!childbirthTime}}">请选择分娩日期</text>
+        </picker>  
+      </view>
+    </view>
+  </view>
+  <view class="tips">
+    <image src='/static/images/tip_icon.png'/>
+    <text>猪仔数要和猪仔详细状态个数对应</text>
+  </view>
+  <view class="btns">
+    <button class="cannel" bindtap="cancelAddress">取消</button>
+    <button class="save" bindtap="saveAddress" disabled='{{saveRepeat}}'>保存</button>
+  </view>
+</view>

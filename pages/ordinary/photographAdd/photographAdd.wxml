@@ -1,0 +1,40 @@
+<view class="container">
+  <view class="post-comment">
+    <view class="add-vaccine">
+    <view class="add-form">
+      <view class="form-item">
+          耳缺:<input class="input" bindinput="bindinputEarNotch" value="{{earNotch}}" data-index="{{index}}" auto-focus/>
+      </view>
+      <view class="form-item">
+          耳标:<input class='input' bindinput="bindinputEarTag" placeholder='请上传耳标' placeholder-class="phcolor" value='{{earTag}}'></input>
+      </view>
+      <view class='form-item-scan'>
+        <button class="scan" bindtap="earTagAdd" data-index="{{index}}">扫一扫</button>
+      </view>
+    </view>
+    </view>
+    <view class="weui-uploader">
+      <view class="weui-uploader__hd">
+        <view class="weui-uploader__title">图片上传</view>
+        <view class="weui-uploader__info">{{picUrls.length}}/{{files.length}}</view>
+      </view>
+      <view class="weui-uploader__bd">
+        <view class="weui-uploader__files" id="uploaderFiles">
+          <block wx:for="{{files}}" wx:key="*this">
+            <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+              <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+            </view>
+          </block>
+          <view class="weui-uploader__input-box">
+            <view class="weui-uploader__input" bindtap="chooseImage"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="btns">
+      <view class="close" bindtap="onClose">取消</view>
+      <view class="post" bindtap="onPost">发表</view>
+    </view>
+  </view>
+</view>

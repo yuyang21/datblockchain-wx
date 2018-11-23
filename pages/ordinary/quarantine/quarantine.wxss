@@ -1,0 +1,66 @@
+@import '../../../add_form.wxss';
+.scanContent{
+  height: 329rpx;
+  display: flex;
+  align-items: center;
+}
+.border-dashed{
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 20rpx;
+  border: dashed 2px #31c4a1;
+  margin-left: 79rpx;
+  display: flex;
+  align-items: center;
+}
+.add-vaccine .scan{
+  width: 166rpx;
+  height: 62rpx;
+  border-radius: 44rpx;
+  background-color: #31c4a1;
+  line-height: 62rpx;
+}
+.modify {
+  width:100%;
+  margin:0;
+  border-radius:0;
+  border:none;
+  height:120rpx;
+}
+.modify .border-dashed {
+  border:none;
+  width:100%;
+  margin:0;
+}
+.modify .scan {
+  text-align:center;
+  background:#fff;
+  color:#31c4a1;
+  font-size:32rpx;
+  font-weight:bold;
+}
+.borderGray{
+  border-top:33rpx solid #f4f4f4;
+}
+.table {
+  width:90%;
+  margin:0 auto;
+}
+.table .tr{
+  font-size: 26rpx;
+  line-height: 100rpx;
+  overflow: hidden;
+  border-bottom:1px dotted #ddd;
+}
+.table .tr .td:first-child{
+  width: 40%;
+  float: left;
+  color: #666;
+}
+.table .tr .td:last-child{
+  width: 60%;
+  float: left;
+  color: #333;
+  text-align: right;
+  font-weight:bold;
+}

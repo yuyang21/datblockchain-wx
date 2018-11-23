@@ -1,0 +1,51 @@
+<view class="add-vaccine">
+  <view class="section">
+    <picker mode="date" value="{{start}}" start="2010-01-01" end="2090-1-1" bindchange="bindStartDateChange">
+      <text>开始时间</text>
+      <view class="picker">{{start}}</view>
+    </picker>
+  </view>
+  <view class="section">
+    <picker mode="date" value="{{end}}" start="2010-01-01" end="2090-1-1" bindchange="bindEndDateChange">
+      <text>结束时间</text>
+      <view class="picker">{{end}}</view>
+    </picker>
+  </view>
+  <view class="form-item-scan">
+    <button class="scan" bindtap="query">查询</button>
+  </view>
+  <view class='border-gray'>
+    <view class='form-item'>
+      <text>时间</text>
+      <view class='matingCheck'>{{start}}至{{end}}</view>
+    </view>
+    <view class='form-item'>
+      <text>窝数</text>
+      <view class='matingCheck'>{{map.alive_number}}</view>
+    </view>
+    <view class='form-item'>
+      <text>总仔</text>
+      <view class='matingCheck'>{{map.piglet_number}}</view>
+    </view>
+    <view class='form-item'>
+      <text>活仔</text>
+      <view class='matingCheck'>{{map.alive_number}}</view>
+    </view>
+    <view class='form-item'>
+      <text>木乃伊</text>
+      <view class='matingCheck'>{{map.mummy_number}}</view>
+    </view>
+    <view class='form-item'>
+      <text>溺仔</text>
+      <view class='matingCheck'>{{map.drowning_number}}</view>
+    </view>
+    <view class='form-item'>
+      <text>死胎</text>
+      <view class='matingCheck'>{{map.stillbirth_number}}</view>
+    </view>
+  </view>
+  <view class="empty-view" wx:if="{{ vaccineList.length <= 0 }}">
+    <image class="icon" src="/static/images/ic_no_record.png"></image>
+    <text class="text">没有肉猪</text>
+  </view>
+</view>

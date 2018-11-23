@@ -1,0 +1,38 @@
+<view class="container">
+    <view class='totle'>
+      <view class="tr bg-w">
+        <view class="th">耳缺</view>
+        <view class="th">窝号</view>
+        <view class="th">胎次</view>
+         <view class="th">断奶时间</view> 
+        <view class="th ">配种</view>
+      </view>
+    </view>
+    <view class="address-list" wx:if="{{ vaccineList.length > 0 }}">
+        <view class="table">
+        <view class="tr_top bg-w"></view>
+          <block wx:for="{{vaccineList}}" wx:key="{{id}}">
+            <view class="tr {{index % 2 == 0?'bg-g':''}}" data-address-id="{{item.id}}">
+              <view class="td">{{item.earNotch}}</view>
+              <view class="td">{{item.columnCode}}</view>
+              <view class="td">{{item.pigNumber}}</view>
+              <view class="td">{{item.newWeaningTime}}</view> 
+              <view class="td"><image catchtap="selectPig" data-address-id="{{item.id}}" class="del" src="/static/images/ic_menu_mating.png"></image></view> 
+            </view>
+          </block>
+        </view>
+    </view>
+    <view class="empty-view" wx:if="{{ vaccineList.length <= 0 }}">
+      <image class="icon" src="/static/images/ic_no_record.png"></image>
+      <text class="text">还没有待配种母猪</text>
+    </view>
+    <view class="total">共{{total}}头母猪待配种</view>
+    <view class="add-vaccine">
+      <view class="btns">
+        <button class="cannel" bindtap="earNotchEnter" data-address-id="0">耳缺/耳标手动录入</button>
+        <button class="save" bindtap="matingList" data-address-id="0">配种记录</button>
+      </view>
+    </view>
+    <!-- <view class="add-vaccine" bindtap="earNotchEnter" data-address-id="0">耳缺/耳标手动录入</view> -->
+    <!-- <view class="add-vaccine_right" bindtap="matingList" data-address-id="0">配种列表</view>  -->
+</view>

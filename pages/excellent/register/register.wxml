@@ -1,0 +1,30 @@
+<view class="container">
+  <view class='totle'>
+    <view class="tr bg-w">
+      <view class="th">耳缺</view>
+      <view class="th">栏号</view>
+      <view class="th">公母</view>
+      <view class="th ">品种</view>
+    </view>
+  </view>
+  <view class="address-list" wx:if="{{ pigList.length > 0 }}">
+    <view class="table">
+      <view class="tr_top bg-w"></view>
+      <block wx:for="{{pigList}}" wx:key="{{id}}">
+        <view class="tr {{index % 2 == 0?'bg-g':''}}" bindtap="addressAddOrUpdate" data-address-id="{{item.id}}">
+          <view class="td">{{item.earNotch}}</view>
+          <view class="td">{{item.columnCode}}</view>
+          <view class="td" wx:if="{{ item.pigGender == 0 }}">公</view>
+          <view class="td" wx:else>母</view>
+          <view class="td">{{item.varieties}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="empty-view" wx:if="{{ pigList.length <= 0 }}">
+    <image class="icon" src="/static/images/ic_no_record.png"></image>
+    <text class="text">还没有登记记录</text>
+  </view>
+  <view class="total">共{{total}}条记录</view>
+  <view class="add-address" bindtap="addressAddOrUpdate" data-address-id="0">新增</view>
+</view>

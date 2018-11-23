@@ -1,0 +1,10 @@
+@import '../../../list_common.wxss';
+.total{
+  bottom: 0;
+}
+.address-list .del{
+  width: 39rpx;
+}
+page{
+  background: #fff;
+}

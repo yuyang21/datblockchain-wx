@@ -1,0 +1,49 @@
+<view class="add-vaccine">
+  <view class="add-form">
+    <view class="form-item">
+            耳缺<input class="input" bindinput="bindinputEarNotch" value="{{register.earNotch}}" placeholder-class="phcolor" placeholder='请输入耳缺' auto-focus/>
+        </view>
+    <view class="form-item">
+      耳标<input class="input" value="{{register.earTag}}" placeholder-class="phcolor" placeholder='请上传耳标' disabled/>
+    </view>
+    <view class="form-item-scan">
+      <button class="scan" bindtap="earTabAdd">扫一扫</button>
+    </view>
+    <view class="form-item">
+      重量(kg)<input class="input" bindinput='bindinputWeight' value="{{register.weight}}" placeholder-class="phcolor" placeholder='请输入重量'/>
+    </view>
+    <view class="section">  
+      <picker mode="date" value="{{date}}" start="2010-01-01" end="2090-1-1" bindchange="bindDateChange">  
+        <text>称重日期</text>
+        <view class="picker" wx:if="{{register.weightTime}}">  
+          {{register.weightTime}}  
+        </view>  
+        <text class="noData" wx:if="{{!register.weightTime}}">请选择出生日期</text>
+      </picker>  
+    </view>
+    <!-- <view class="form-item">
+      耳缺:
+      <input class="input" bindinput="bindinputEarNotch" value="{{register.earNotch}}" auto-focus/>
+    </view>
+    <view class="form-item">
+      耳标:
+      <view>{{register.earTag}}</view>
+      <button class="scan" bindtap="earTabAdd">扫一扫</button>
+    </view>
+    <view class="form-item">
+      重量(kg):
+      <input type="number" class="input" bindinput='bindinputWeight' value="{{register.weight}}" />
+    </view>
+    <view class="section">
+      <picker mode="date" value="{{date}}" start="2010-01-01" end="2090-1-1" bindchange="bindDateChange">
+        <view class="picker">
+          称重日期: {{register.weightTime}}
+        </view>
+      </picker>
+    </view> -->
+  </view>
+  <view class="btns">
+    <button class="cannel" bindtap="cancelAddress">取消</button>
+    <button class="save" bindtap="saveAddress" disabled='{{saveRepeat}}'>保存</button>
+  </view>
+</view>

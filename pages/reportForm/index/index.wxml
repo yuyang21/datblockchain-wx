@@ -1,0 +1,8 @@
+<view class="panel">
+  <view class="chart-with-img" wx:for="{{charts}}" wx:for-item="chart" wx:key="{{chart.id}}" bindtap="open" data-chart="{{chart}}">
+    <image class='image' src="{{chart.src}}" mode="aspectFit"></image>
+    <text>{{chart.name}}</text>
+    <image class='goTo' src="/static/images/echarts/icons/go-into.png"></image>
+  </view>
+</view>
+

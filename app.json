@@ -1,0 +1,82 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/auth/login/login",
+    "pages/auth/register/register",
+    "pages/auth/reset/reset",
+    "pages/auth/wxLogin/login",
+    "pages/ucenter/index/index",
+    "pages/excellent/register/register",
+    "pages/excellent/registerAdd/registerAdd",
+    "pages/excellent/vaccine/vaccine",
+    "pages/excellent/vaccineAdd/vaccineAdd",
+    "pages/excellent/mating/mating",
+    "pages/excellent/matingAdd/matingAdd",
+    "pages/excellent/matingBoar/matingBoar",
+    "pages/excellent/matingRecord/matingRecord",
+    "pages/excellent/gestation/gestation",
+    "pages/excellent/gestationAdd/gestationAdd",
+    "pages/excellent/childbirth/childbirth",
+    "pages/excellent/childbirthAdd/childbirthAdd",
+    "pages/excellent/childbirthRecord/childbirthRecord",
+    "pages/ordinary/register/register",
+    "pages/ordinary/registerAdd/registerAdd",
+    "pages/excellent/changePigsty/changePigsty",
+    "pages/excellent/changePigstyAdd/changePigstyAdd",
+    "pages/excellent/destroy/destroy",
+    "pages/ordinary/changePigsty/changePigsty",
+    "pages/reportForm/index/index",
+    "pages/reportForm/bar/index",
+    "pages/reportForm/pie/index",
+    "pages/reportForm/line/index",
+    "pages/reportForm/tree/index",
+    "pages/ordinary/weight/weight",
+    "pages/ordinary/outPigsty/outPigsty",
+    "pages/ordinary/weightAdd/weightAdd",
+    "pages/ordinary/slaughter/slaughter",
+    "pages/ordinary/slaughterAdd/slaughterAdd",
+    "pages/ordinary/quarantine/quarantine",
+    "pages/reportForm/parity/index",
+    "pages/ordinary/traceability/traceability",
+    "pages/ordinary/photograph/photograph",
+    "pages/ordinary/photographAdd/photographAdd",
+    "pages/ordinary/destroy/destroy",
+    "pages/ordinary/ordinaryReg/register",
+    "pages/ordinary/ordinaryRegAdd/registerAdd",
+    "pages/ordinary/feeding/feeding"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#31c4a1",
+    "navigationBarTitleText": "区块黑猪",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "borderStyle": "#999",
+    "selectedColor": "#31c4a1",
+    "color": "#666666",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/tabBar/icon_CSR.png",
+        "selectedIconPath": "static/images/tabBar/icon_CSR_HL.png",
+        "text": "工作"
+      },
+      {
+        "pagePath": "pages/ucenter/index/index",
+        "iconPath": "static/images/tabBar/icon_settings.png",
+        "selectedIconPath": "static/images/tabBar/icon_settings_HL.png",
+        "text": "设置"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

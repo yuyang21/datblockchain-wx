@@ -1,0 +1,66 @@
+<view class="add-vaccine">
+    <view class="add-form">
+        <!-- <view class="form-item">
+          <radio-group bindchange="radioChange" class="group-type">
+            <radio value="1" name="matingType" checked="{{register.matingType==1}}" class='radio-type'>人工授精</radio>
+            <radio value="2" name="matingType" checked="{{register.matingType==2}}" >自然交配</radio>
+          </radio-group>
+        </view> -->
+        <view class="section"> 
+          <picker bindchange="bindMatingTypeChange" value="{{matingTypeIndex}}" range="{{matingTypeArr}}">  
+              <text>配种方式</text>
+              <view class="picker" wx:if="{{matingTypeText}}">  
+                {{matingTypeText}}  
+              </view>
+              <text class="noData" wx:if="{{!matingTypeText}}">请选择配种方式</text>
+          </picker>
+        </view> 
+        <view class="form-item" wx:if="{{isQuick}}">
+            母猪耳缺<input class="input" bindinput="bindinputSowEarNotch" value="{{register.sowEarNotch}}" placeholder-class="phcolor" placeholder='请输入母猪耳缺' auto-focus/>
+        </view>
+        <view class="form-item" wx:if="{{isQuick}}">
+            母猪耳标<input class="input" value="{{register.sowEarTag}}" placeholder-class="phcolor" placeholder='请上传母猪耳标' disabled/>
+        </view>
+        <view class="form-item-scan" wx:if="{{isQuick}}">
+          <button class="scan" data-value="sow" bindtap="earTabAdd">扫一扫</button>
+        </view>
+        <view class="form-item" wx:if="{{isQuick}}">
+            公猪耳缺<input class="input" bindinput="bindinputBoarEarNotch" value="{{register.boarEarNotch}}" placeholder-class="phcolor" placeholder='请输入公猪耳缺' auto-focus/>
+        </view>
+        <view class="form-item" wx:if="{{isQuick}}">
+            公猪耳标<input class="input" value="{{register.boarEarTag}}" placeholder-class="phcolor" placeholder='请上传公猪耳标' disabled/>
+        </view>
+        <view class="form-item-scan" wx:if="{{isQuick}}">
+          <button class="scan" data-value="boar" bindtap="earTabAdd">扫一扫</button>
+        </view>
+        <view class="section">  
+          <picker mode="date" value="{{date}}" start="2010-01-01" end="2090-1-1" bindchange="bindDateChange">  
+            <text>配种日期</text>
+            <view class="picker" wx:if="{register.matingTime}}">{{register.matingTime}}</view>
+            <text class='noData' wx:if="{{!register.matingTime}}">请选择接种日期</text>
+          </picker>  
+        </view>
+        <!-- <view class="form-item">
+            备注:<input class="input" bindinput="bindinputSource" value="{{register.vaccineCode}}"/>
+        </view> -->
+        <view class="form-item">
+          <text>校验</text>
+          <view class="matingCheck" wx:if="{{matingCheck == 1}}">通过</view>
+          <view class="matingCheck" wx:if="{{matingCheck == 0}}">未校验</view>
+          <view class="matingCheck" wx:if="{{matingCheck == 2}}">不可配种，存在3代血缘</view>
+          <view class="matingCheck" wx:if="{{matingCheck == 3}}">种公猪信息不符</view>
+          <view class="matingCheck" wx:if="{{matingCheck == 4}}">种母猪信息不符</view>
+        </view>
+        <view class="form-item-scan">
+          <button class="scan" bindtap="matingCheckFun" disabled='{{checkfunRepeat}}'>配种族谱检查</button>
+        </view>
+    </view>
+    <view class="tips">
+        <image src='/static/images/tip_icon.png'/>
+        <text>3代以内种公猪与种母猪不可配种，请点击配种族谱检查进行校验。</text>
+    </view>
+    <view class="btns">
+        <button class="cannel" bindtap="cancelAddress">取消</button>
+        <button class="save" bindtap="saveAddress" disabled='{{saveRepeat}}'>保存</button>
+    </view>
+</view>

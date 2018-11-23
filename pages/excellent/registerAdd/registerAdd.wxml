@@ -1,0 +1,54 @@
+<view class="add-vaccine">
+  <view class="add-form">
+    <view class="section">
+      <picker bindchange="bindGenderChange" value="{{pigGenderIndex}}" range="{{pigGenderArr}}">
+        <text>公母</text>
+        <view class="picker" wx:if="{{register.pigGender != null}}">
+          {{pigGenderArr[register.pigGender]}}
+        </view>
+        <text class="noData" wx:if="{{register.pigGender == null}}">请选择公母</text>
+      </picker>
+    </view>
+    <view class="form-item">
+      栏号
+      <input class="input" bindinput="bindinputColumnCode" value="{{register.columnCode}}" placeholder-class="phcolor" placeholder='请输入栏号' auto-focus/>
+    </view>
+    <view class="form-item">
+      耳缺
+      <input class="input" bindinput="bindinputEarNotch" value="{{register.earNotch}}" placeholder-class="phcolor" placeholder='请输入耳缺' auto-focus/>
+    </view>
+    <view class="form-item">
+      耳标
+      <input class="input" value="{{register.earTag}}" placeholder-class="phcolor" placeholder='请上传耳标' disabled/>
+    </view>
+    <view class="form-item-scan">
+      <button class="scan" bindtap="earTabAdd">扫一扫</button>
+    </view>
+    <view class="section">
+      <picker bindchange="bindPickerChange" value="{{varietiesIndex}}" range="{{varietiesArr}}">
+        <text>品种</text>
+        <view class="picker" wx:if="{{register.varieties}}">
+          {{register.varieties}}
+        </view>
+        <text class="noData" wx:if="{{!register.varieties}}">请选择品种</text>
+      </picker>
+    </view>
+    <view class="section">
+      <picker mode="date" value="{{date}}" start="2010-01-01" end="2090-1-1" bindchange="bindDateChange">
+        <text>出生日期</text>
+        <view class="picker" wx:if="{{register.birth}}">
+          {{register.birth}}
+        </view>
+        <text class="noData" wx:if="{{!register.birth}}">请选择出生日期</text>
+      </picker>
+    </view>
+    <view class="form-item">
+      说明
+      <input class="input" bindinput="bindinputSource" value="{{register.source}}" placeholder-class="phcolor" placeholder='请输入说明' />
+    </view>
+  </view>
+  <view class="btns">
+    <button class="cannel" bindtap="cancelAddress">取消</button>
+    <button class="save" bindtap="saveAddress" disabled='{{checkfunRepeat}}'>保存</button>
+  </view>
+</view>

@@ -1,0 +1,48 @@
+<view class="container">
+  <view class='totle'>
+    <view class="tr bg-w">
+      <view class="th">免疫时间</view>
+      <view class="th">疫苗名称</view>
+      <view class="th ">免疫猪</view>
+      <!-- <view class="th ">具体值</view> -->
+    </view>
+  </view>
+  <view class="address-list" wx:if="{{ vaccineList.length > 0 }}">
+    <view class="table">
+      <view class="tr_top bg-w"></view>
+      <block wx:for="{{vaccineList}}" wx:key="{{id}}">
+        <view class="tr {{index % 2 == 0?'bg-g':''}}" data-address-id="{{item.id}}">
+          <view class="td">{{item.vaccineTime}}</view>
+          <view class="td">{{item.vaccine}}</view>
+          <view class="td" wx:if="{{ item.selectType == 1 }}">
+            全部
+            <block wx:if="{{item.pigType == 0}}">种猪</block>
+            <block wx:else>肉猪</block>
+          </view>
+          <view class="td" wx:if="{{ item.selectType == 2 }}">
+            栏号：{{item.columnCodes}}
+          </view>
+          <view class="td" wx:if="{{ item.selectType == 3 }}">
+            耳缺:{{item.earNotchs}}
+          </view>
+          <view class="td" wx:if="{{ item.selectType == 4 }}">
+            耳标:{{item.earTags}}
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="empty-view" wx:if="{{ vaccineList.length <= 0 }}">
+    <image class="icon" src="/static/images/ic_no_record.png"></image>
+    <text class="text">
+      <block wx:if="{{pigType == 0}}">
+        还没有种猪免疫记录
+      </block>
+      <block wx:else>
+      还没有肉猪免疫记录
+      </block>
+      </text>
+  </view>
+  <view class='total'>共{{total}}条免疫记录</view>
+  <view class="add-vaccine" bindtap="vaccineAddOrUpdate" data-address-id="0">新增免疫记录</view>
+</view>

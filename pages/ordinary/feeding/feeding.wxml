@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="address-list" wx:if="{{ feedingList.length > 0 }}">
+    <view class="table">
+      <block wx:for="{{feedingList}}" wx:key="{{id}}">
+        <view class="tr {{index % 2 == 0?'bg-g':''}}" bindtap="addressAddOrUpdate" data-address-id="{{item.id}}">
+          <view>耳标:{{item.earTag}}</view>
+          <view>采食时间:{{item.feedingTime}} 采食总时长:{{item.fendingLength}}分钟</view>
+          <view>采食次数:{{item.feedingFrequency}}次 采食总量:{{item.feedingNum}}kg 
+            体重:{{item.weight}}kg</view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="empty-view" wx:if="{{ pigList.length <= 0 }}">
+    <image class="icon" src="/static/images/ic_no_record.png"></image>
+    <text class="text">还没有登记记录</text>
+  </view>
+  <view class="total">共{{total}}条记录</view>
+</view>
